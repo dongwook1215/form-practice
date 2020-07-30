@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 800px;
+            margin: 0 auto;
+        }
+        img{
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+        }
+        a{
+            font-size: 150%;
+        }
+    </style>
+</head>
+<body>
+    {% if user.is_authenticated %}
+      <div align='center'>
+          <hr>
+        <h1>{{user.username}}님 환영합니다</h1> <br> <br>
+        <img src="{{user.user_info.profile.url}}" alt=""> <br> <br>
+        이메일:<a href="{{user.email}}">{{user.email}}</a> 
+          <br><br>
+          <hr>
+      </div>
+    {% else %}
+      <a href="{% url 'register' %}">Signup</a>
+      <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</body>
+</html>
